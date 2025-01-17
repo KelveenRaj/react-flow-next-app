@@ -12,6 +12,13 @@ import "reactflow/dist/style.css";
 import { Box } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { initialEdges, initialNodes } from "@components/Workflow.constants";
+import PaymentInit from "@components/Workflow/PaymentInit";
+import PaymentCountry from "@components/Workflow/PaymentCountry";
+
+const nodeTypes = {
+  paymentInit: PaymentInit,
+  paymentCountry: PaymentCountry,
+};
 
 const Home = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -23,13 +30,14 @@ const Home = () => {
   }, []);
 
   return (
-    <Box height="1000px" width="1000px" border="1px solid black">
+    <Box height="600px" width="600px" border="1px solid black">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
         fitView
       >
         <Background />

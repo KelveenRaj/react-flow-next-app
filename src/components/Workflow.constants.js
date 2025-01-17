@@ -7,8 +7,27 @@ export const initialNodes = [
     },
     type: "paymentInit",
   },
+  {
+    id: "2",
+    position: { x: 300, y: 20 },
+    data: {
+      currency: "$",
+      country: "United States",
+      countryCode: "US",
+    },
+    type: "paymentCountry",
+  },
+  {
+    id: "3",
+    position: { x: 300, y: 200 },
+    data: {
+      currency: "£",
+      country: "England",
+      countryCode: "GB",
+    },
+    type: "paymentCountry",
+  },
 ];
 
 export const initialEdges = [
-  { id: "1-2", source: "1", target: "2", animated: true },
 ];

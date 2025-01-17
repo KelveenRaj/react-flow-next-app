@@ -1,22 +1,34 @@
 import React from "react";
 import { Handle, Position } from "reactflow";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import ReactCountryFlag from "react-country-flag";
 
 const PaymentCountry = ({ data: { country, countryCode, currency } }) => {
   return (
-    <Box bg="white" border="1px solid #aa1fff">
-      <Box bg="#410566" p={1}>
-        <Text fontSize="small" color="white">
-          Payment Initialized
-        </Text>
+    <Flex
+      alignItems={"center"}
+      borderRadius={"8px"}
+      bg={"#e2e8f0"}
+      border={"2px solid #bbbdbf"}
+      p={2}
+      gap={2}
+      width={"155px"}
+    >
+      <Box>
+        <ReactCountryFlag
+          countryCode={countryCode}
+          svg
+          aria-label={country}
+          style={{ fontSize: "2em", lineHeight: "2em" }}
+        />
       </Box>
-      <Box p={2}>
-        <Text fontSize="2xl" color="blue.600">
-          $
-        </Text>
-      </Box>
-      <Handle type="source" position={Position.Right} />
-    </Box>
+      <Flex grow={"1"}>
+        <Box>
+          <Text>{country}</Text>
+          <Text>{currency}</Text>
+        </Box>
+      </Flex>
+    </Flex>
   );
 };
 

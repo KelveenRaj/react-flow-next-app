@@ -29,5 +29,4 @@ export const initialNodes = [
   },
 ];
 
-export const initialEdges = [
-];
+export const initialEdges = [];

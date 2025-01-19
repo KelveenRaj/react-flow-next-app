@@ -12,8 +12,8 @@ import "reactflow/dist/style.css";
 import { Box } from "@chakra-ui/react";
 import { useCallback } from "react";
 import { initialEdges, initialNodes } from "@components/Workflow.constants";
-import PaymentInit from "@components/Workflow/PaymentInit";
-import PaymentCountry from "@components/Workflow/PaymentCountry";
+import PaymentInit from "@components/PaymentInit";
+import PaymentCountry from "@components/PaymentCountry";
 
 const nodeTypes = {
   paymentInit: PaymentInit,

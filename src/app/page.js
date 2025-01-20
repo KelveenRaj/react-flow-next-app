@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useCallback } from "react";
 import ReactFlow, {
   addEdge,
   Background,
@@ -10,27 +11,43 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { Box } from "@chakra-ui/react";
-import { useCallback } from "react";
 import { initialEdges, initialNodes } from "@components/Workflow.constants";
 import PaymentInit from "@components/PaymentInit";
 import PaymentCountry from "@components/PaymentCountry";
+import PaymentProvider from "@components/PaymentProvider";
+import PaymentProviderSelect from "@components/PaymentProviderSelect";
+import CustomEdge from "@components/CustomEdge";
 
 const nodeTypes = {
   paymentInit: PaymentInit,
   paymentCountry: PaymentCountry,
+  paymentProvider: PaymentProvider,
+  paymentProviderSelect: PaymentProviderSelect,
+};
+
+const edgeTypes = {
+  customEdge: CustomEdge,
 };
 
 const Home = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback((connection) => {
-    const edge = { ...connection, animated: true, id: `${edges.length} + 1` };
-    setEdges((prevEdge) => addEdge(edge, prevEdge));
-  }, []);
+  const onConnect = useCallback(
+    (connection) => {
+      const edge = {
+        ...connection,
+        animated: true,
+        id: `${edges.length + 1}`,
+        type: "customEdge",
+      };
+      setEdges((prevEdges) => addEdge(edge, prevEdges));
+    },
+    [edges]
+  );
 
   return (
-    <Box height="600px" width="600px" border="1px solid black">
+    <Box height="100vh" width="auto" border="1px solid black">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -38,6 +55,7 @@ const Home = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         fitView
       >
         <Background />

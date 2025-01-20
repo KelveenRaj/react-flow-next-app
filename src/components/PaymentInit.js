@@ -1,21 +1,27 @@
 import React from "react";
-import { Handle, Position } from "reactflow";
+import { Position } from "reactflow";
 import { Box, Text } from "@chakra-ui/react";
+import CustomHandle from "./CustomHandle";
 
 const PaymentInit = ({ data: { amount } }) => {
   return (
-    <Box bg="white" border="1px solid #aa1fff">
-      <Box bg="#410566" p={1}>
-        <Text fontSize="small" color="white">
-          Payment Initialized
-        </Text>
+    <Box
+      alignItems="center"
+      borderRadius="24px"
+      bg="white"
+      border="2px solid #5353ff"
+      gap={2}
+      width="140px"
+    >
+      <Box p={1} margin="5px">
+        <Text fontSize="small">Payment Initialized</Text>
       </Box>
       <Box p={2}>
         <Text fontSize="2xl" color="blue.600">
           ${amount}
         </Text>
       </Box>
-      <Handle type="source" position={Position.Right} />
+      <CustomHandle type="source" position={Position.Right} />
     </Box>
   );
 };

@@ -1,1 +1,1 @@
-react-flow using nextjs and chakra ui
+react flow example with next and chakra ui v3

@@ -56,6 +56,15 @@ export const initialNodes = [
   },
   {
     id: "7",
+    position: { x: 550, y: 525 },
+    data: {
+      name: "Paypal",
+      code: "Pp",
+    },
+    type: "paymentProvider",
+  },
+  {
+    id: "8",
     position: { x: 275, y: -100 },
     data: {},
     type: "paymentProviderSelect",
